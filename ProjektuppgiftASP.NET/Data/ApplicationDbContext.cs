@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using ProjektuppgiftASP.NET.Models;
+using ProjektuppgiftASP.NET.Data;
 
 namespace ProjektuppgiftASP.NET.Data
 {
@@ -12,5 +14,9 @@ namespace ProjektuppgiftASP.NET.Data
             : base(options)
         {
         }
+        public DbSet<Event> Event { get; set; }
+        public DbSet<User> User { get; set; }
+
+
     }
 }
