@@ -17,8 +17,8 @@ namespace ProjektuppgiftASP.NET.Areas.Identity.Pages.Account
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager; //Authorization
+        private readonly SignInManager<IdentityUser> _signInManager; // Authentication
         private readonly ILogger<LoginModel> _logger;
 
         public LoginModel(SignInManager<IdentityUser> signInManager, 
@@ -64,6 +64,12 @@ namespace ProjektuppgiftASP.NET.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
 
             // Clear the existing external cookie to ensure a clean login process
+
+            /*
+            SignInManager har med Authentication att göra (- identifiering, vem är du ?) 
+            SignInManager är det C# objekt vi använder oss av 
+            för att identifiera och logga in och logga ut användaren.   
+             */
             await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
