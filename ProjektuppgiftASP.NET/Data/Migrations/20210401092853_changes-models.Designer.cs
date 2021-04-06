@@ -9,7 +9,7 @@ using ProjektuppgiftASP.NET.Data;
 
 namespace ProjektuppgiftASP.NET.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(EventContext))]
     [Migration("20210401092853_changes-models")]
     partial class changesmodels
     {

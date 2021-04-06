@@ -10,57 +10,45 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Place)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Adress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Event[0].SpotsAvailable)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Event) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Place)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SpotsAvailable)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+<h1>Events</h1>
+
+
+
+@{int i = 0;}
+@foreach (var item in Model.Event)
+{
+    <div class="accordion" id="accordionExample_@i">
+        <div class="card">
+            <div class="card-header" id="headingOne_@i">
+                <h2 class="mb-0">
+                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne_@i" aria-expanded="true" aria-controls="collapseOne">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </button>
+                    <a asp-page="./JoinEvents" asp-route-id="@item.Id">
+                        <input type="button" class="btn btn-primary" value="Join">
+                    </a>
+                </h2>
+            </div>
+
+            <div id="collapseOne_@i" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample_@i">
+                <div class="card-body">
+                    @Html.DisplayNameFor(model => model.Event[0].Description) : @Html.DisplayFor(modelItem => item.Description)
+                    <br />
+
+                    @Html.DisplayNameFor(model => model.Event[0].Place) :  @Html.DisplayFor(modelItem => item.Place)
+                    <br />
+                    @Html.DisplayNameFor(model => model.Event[0].Adress) : @Html.DisplayFor(modelItem => item.Adress)
+                    <br />
+
+                    @Html.DisplayNameFor(model => model.Event[0].Date) : @Html.DisplayFor(modelItem => item.Date)
+                    <br />
+
+                    @Html.DisplayNameFor(model => model.Event[0].SpotsAvailable) :  @Html.DisplayFor(modelItem => item.SpotsAvailable)
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    i++;
 }
-    </tbody>
-</table>

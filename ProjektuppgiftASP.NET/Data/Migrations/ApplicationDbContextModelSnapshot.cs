@@ -8,7 +8,7 @@ using ProjektuppgiftASP.NET.Data;
 
 namespace ProjektuppgiftASP.NET.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(EventContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -12,9 +12,9 @@ namespace ProjektuppgiftASP.NET.Pages
 {
     public class EventsModel : PageModel
     {
-        private readonly ProjektuppgiftASP.NET.Data.ApplicationDbContext _context;
+        private readonly EventContext _context;
 
-        public EventsModel(ProjektuppgiftASP.NET.Data.ApplicationDbContext context)
+        public EventsModel(EventContext context)
         {
             _context = context;
         }

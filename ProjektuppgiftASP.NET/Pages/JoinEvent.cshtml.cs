@@ -12,9 +12,9 @@ namespace ProjektuppgiftASP.NET.Pages
 {
     public class JoinEventModel : PageModel
     {
-        private readonly ProjektuppgiftASP.NET.Data.ApplicationDbContext _context;
+        private readonly ProjektuppgiftASP.NET.Data.EventContext _context;
 
-        public JoinEventModel(ProjektuppgiftASP.NET.Data.ApplicationDbContext context)
+        public JoinEventModel(ProjektuppgiftASP.NET.Data.EventContext context)
         {
             _context = context;
         }

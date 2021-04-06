@@ -12,9 +12,9 @@ namespace ProjektuppgiftASP.NET.Pages
 {
     public class MyEventsModel : PageModel
     {
-        private readonly ProjektuppgiftASP.NET.Data.ApplicationDbContext _context;
+        private readonly EventContext _context;
 
-        public MyEventsModel(ProjektuppgiftASP.NET.Data.ApplicationDbContext context)
+        public MyEventsModel(EventContext context)
         {
             _context = context;
         }
@@ -23,7 +23,10 @@ namespace ProjektuppgiftASP.NET.Pages
 
         public async Task OnGetAsync()
         {
+
             Event = await _context.Event.ToListAsync();
         }
+
+  
     }
 }
