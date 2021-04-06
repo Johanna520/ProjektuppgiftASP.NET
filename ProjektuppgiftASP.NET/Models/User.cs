@@ -12,7 +12,10 @@ namespace ProjektuppgiftASP.NET.Models
        
         public string FirstName { get; set; }
         public string LastName { get; set; }
+
+        [InverseProperty("Organizer")]
         public Event HostedEvents { get; set; } // one-to-many
+        [InverseProperty("Attendees")]
         public List<Event> JoinedEvents { get; set; } // FK many-to-many
 
     }

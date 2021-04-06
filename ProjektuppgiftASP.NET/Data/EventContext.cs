@@ -17,13 +17,10 @@ namespace ProjektuppgiftASP.NET.Data
         }
         public DbSet<Event> Event { get; set; }
         public DbSet<User> User { get; set; }
-        public async Task SeedAsync(UserManager<User> userManager)
+        public async Task SeedAsync(UserManager<IdentityUser> userManager)
         {
             await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();
-
-
-
 
             Event[] Event = new Event[]
             {

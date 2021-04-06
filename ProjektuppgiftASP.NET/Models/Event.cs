@@ -13,7 +13,6 @@ namespace ProjektuppgiftASP.NET.Models
         [InverseProperty("JoinedEvents")]
         public List<User> Attendees { get; set; } //FK, many-to-many
 
-        [InverseProperty("HostedEvents")]
         public List<User> Organizer { get; set; } // FK, one-to-many
         public string Title { get; set; }
         public string Description { get; set; }

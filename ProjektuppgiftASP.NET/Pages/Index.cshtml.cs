@@ -18,21 +18,21 @@ namespace ProjektuppgiftASP.NET.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly EventContext _context;
-        private readonly UserManager<User> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public IndexModel(ILogger<IndexModel> logger, EventContext context, UserManager<User> userManager)
+
+        public IndexModel(ILogger<IndexModel> logger, 
+            EventContext context, 
+            UserManager<IdentityUser> userManager)
         {
             _logger = logger;
             _context = context;
             _userManager = userManager;
         }
 
-        public async Task OnGetAsync(bool? resetDb)
+       public async Task OnGetAsync()
         {
-            if (resetDb ?? false)
-            {
-                await _context.SeedAsync(_userManager);
-            }
+            await _context.SeedAsync(_userManager);
         }
     }
 }

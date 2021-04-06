@@ -16,11 +16,11 @@ namespace ProjektuppgiftASP.NET
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            /*using (var scope = host.Services.CreateScope())
+           /* using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 var eventContext = services.GetRequiredService<EventContext>();
-                //eventContext.Seed();
+                eventContext.Seed();
             }*/
 
             host.Run();
