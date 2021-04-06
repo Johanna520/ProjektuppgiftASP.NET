@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjektuppgiftASP.NET.Data
 { 
-    public class EventContext : IdentityDbContext    
+    public class EventContext : IdentityDbContext<User>
     {
         public EventContext(DbContextOptions<EventContext> options)
             : base(options)
@@ -17,28 +17,31 @@ namespace ProjektuppgiftASP.NET.Data
         }
         public DbSet<Event> Event { get; set; }
         public DbSet<User> User { get; set; }
-    }
-    public async Task SeedAsync(UserManager<User> userManager)
-    {
-        await Database.EnsureDeletedAsync();
-        await Database.EnsureCreated();
-        
-
-        
-
-        Event[] Event = new Event[]
+        public async Task SeedAsync(UserManager<User> userManager)
         {
+            await Database.EnsureDeletedAsync();
+            await Database.EnsureCreatedAsync();
+
+
+
+
+            Event[] Event = new Event[]
+            {
                 new Event() { Title="Alicia Keys", Description="Music", Place="Ericsson Globe", Adress="Stockholm", Date=DateTime.Now,  SpotsAvailable=150,  },
                  new Event() { Title="CS:Go Major", Description="E-sport", Place="Ericsson Globe", Adress="Stockholm", Date=DateTime.Now,  SpotsAvailable=100,  },
                   new Event() { Title="Sweden International Horse Show", Description="Horse show", Place="Ericsson Globe", Adress="Stockholm", Date=DateTime.Now,  SpotsAvailable=330,  },
                    new Event() { Title="GAIS - Öster IF", Description="Soccer", Place="Ullevi", Adress="Gothenburg",Date=DateTime.Now,  SpotsAvailable=270, },
                     new Event() { Title="Iron Maiden", Description="Music", Place="Ullevi", Adress="Gothenburg", Date=DateTime.Now,  SpotsAvailable=500, }
-        };
+            };
 
-       
-        await AddRange(Event);
-        await SaveChanges();
+
+
+            await AddRangeAsync(Event);
+
+            await SaveChangesAsync();
+        }
     }
+   
 }
 /*   Event model
     [InverseProperty("JoinedEvents")]

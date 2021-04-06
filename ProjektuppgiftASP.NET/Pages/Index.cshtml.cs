@@ -31,7 +31,7 @@ namespace ProjektuppgiftASP.NET.Pages
         {
             if (resetDb ?? false)
             {
-                await _context.ResetAndSeedAsync(_userManager);
+                await _context.SeedAsync(_userManager);
             }
         }
     }
