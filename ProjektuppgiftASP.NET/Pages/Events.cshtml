@@ -24,7 +24,7 @@
                     <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne_@i" aria-expanded="true" aria-controls="collapseOne">
                         @Html.DisplayFor(modelItem => item.Title)
                     </button>
-                    <a asp-page="./JoinEvents" asp-route-id="@item.Id">
+                    <a asp-page="./JoinEvent" asp-route-id="@item.Id">
                         <input type="button" class="btn btn-primary" value="Join">
                     </a>
                 </h2>

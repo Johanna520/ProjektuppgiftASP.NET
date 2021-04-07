@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,13 +12,18 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages
 {
+    [Authorize]
     public class JoinEventModel : PageModel
     {
         private readonly EventContext _context;
+        private readonly UserManager<MyUser> _userManager;
 
-        public JoinEventModel(EventContext context)
+        public JoinEventModel(EventContext context,
+            UserManager<MyUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
+
         }
 
         public Event Event { get; set; }
@@ -38,22 +45,24 @@ namespace ProjektuppgiftASP.NET.Pages
 
             return Page();
         }
-        [BindProperty]
-        public Event MyEvent { get; set; }
 
+        [BindProperty]
+        public Event newEvents { get; set; }
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
+            var userId = _userManager.GetUserId(User);
+            var user = await _context.MyUser.Where(a => a.Id == userId)
+             .Include(e => e.JoinedEvents)
+             .FirstOrDefaultAsync();
 
             Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
+            user.JoinedEvents.Add(Event);
 
-            if (Event == null)
-            {
-                return NotFound();
-            }
+            await _context.SaveChangesAsync();
 
             return Page();
 

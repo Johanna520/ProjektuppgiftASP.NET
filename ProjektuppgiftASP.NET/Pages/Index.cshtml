@@ -1,4 +1,9 @@
-﻿@page
+﻿
+@page
+@using Microsoft.AspNetCore.Identity
+@using ProjektuppgiftASP.NET.Models;
+@inject SignInManager<MyUser> SignInManager
+@inject UserManager<MyUser> UserManager
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -8,10 +13,20 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-<div class="indexButton">
-    <a  asp-area="Identity" asp-page="/Account/Register">
-        <input type="button" class="btn btn-primary" value="Register">
-    </a> <a asp-area="Identity" asp-page="/Account/Login">
-        <input type="button" class="btn btn-primary" value="Log In">
-    </a>
+
+<div class="d-flex justify-content-center py-5">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-page="/Events" type="button" class="btn btn-outline-primary">Find A New Event!</a>
+
+
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Register">
+            <input type="button" class="btn btn-primary" value="Register">
+        </a> <a asp-area="Identity" asp-page="/Account/Login">
+            <input type="button" class="btn btn-primary" value="Log In">
+        </a>
+    }
 </div>
