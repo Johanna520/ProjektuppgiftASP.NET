@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektuppgiftASP.NET.Data;
 
 namespace ProjektuppgiftASP.NET.Data.Migrations
 {
     [DbContext(typeof(EventContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210407081558_changeMyUser")]
+    partial class changeMyUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,7 +21,7 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("EventMyUser", b =>
+            modelBuilder.Entity("EventUser", b =>
                 {
                     b.Property<string>("AttendeesId")
                         .HasColumnType("nvarchar(450)");
@@ -31,7 +33,7 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
 
                     b.HasIndex("JoinedEventsId");
 
-                    b.ToTable("EventMyUser");
+                    b.ToTable("EventUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -199,7 +201,7 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
                     b.ToTable("Event");
                 });
 
-            modelBuilder.Entity("ProjektuppgiftASP.NET.Models.MyUser", b =>
+            modelBuilder.Entity("ProjektuppgiftASP.NET.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -275,9 +277,9 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("EventMyUser", b =>
+            modelBuilder.Entity("EventUser", b =>
                 {
-                    b.HasOne("ProjektuppgiftASP.NET.Models.MyUser", null)
+                    b.HasOne("ProjektuppgiftASP.NET.Models.User", null)
                         .WithMany()
                         .HasForeignKey("AttendeesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -301,7 +303,7 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ProjektuppgiftASP.NET.Models.MyUser", null)
+                    b.HasOne("ProjektuppgiftASP.NET.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -310,7 +312,7 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ProjektuppgiftASP.NET.Models.MyUser", null)
+                    b.HasOne("ProjektuppgiftASP.NET.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -325,7 +327,7 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProjektuppgiftASP.NET.Models.MyUser", null)
+                    b.HasOne("ProjektuppgiftASP.NET.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -334,14 +336,14 @@ namespace ProjektuppgiftASP.NET.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ProjektuppgiftASP.NET.Models.MyUser", null)
+                    b.HasOne("ProjektuppgiftASP.NET.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjektuppgiftASP.NET.Models.MyUser", b =>
+            modelBuilder.Entity("ProjektuppgiftASP.NET.Models.User", b =>
                 {
                     b.HasOne("ProjektuppgiftASP.NET.Models.Event", "HostedEvents")
                         .WithMany("Organizer")

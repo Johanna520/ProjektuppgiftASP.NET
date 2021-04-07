@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace ProjektuppgiftASP.NET.Models
 {
-    public class User : IdentityUser
+    public class MyUser : IdentityUser
     {
        
         public string FirstName { get; set; }

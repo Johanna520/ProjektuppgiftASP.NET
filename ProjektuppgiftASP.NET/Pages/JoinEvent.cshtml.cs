@@ -12,9 +12,9 @@ namespace ProjektuppgiftASP.NET.Pages
 {
     public class JoinEventModel : PageModel
     {
-        private readonly ProjektuppgiftASP.NET.Data.EventContext _context;
+        private readonly EventContext _context;
 
-        public JoinEventModel(ProjektuppgiftASP.NET.Data.EventContext context)
+        public JoinEventModel(EventContext context)
         {
             _context = context;
         }
@@ -34,7 +34,30 @@ namespace ProjektuppgiftASP.NET.Pages
             {
                 return NotFound();
             }
+
+
             return Page();
+        }
+        [BindProperty]
+        public Event MyEvent { get; set; }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Event == null)
+            {
+                return NotFound();
+            }
+
+            return Page();
+
+
         }
     }
 }

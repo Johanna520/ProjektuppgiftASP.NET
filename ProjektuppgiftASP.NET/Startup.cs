@@ -32,7 +32,7 @@ namespace ProjektuppgiftASP.NET
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<MyUser>()
                 .AddEntityFrameworkStores<EventContext>();
             services.AddRazorPages();
         }

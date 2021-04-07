@@ -11,19 +11,20 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<IdentityUser> _userManager; //Authorization
-        private readonly SignInManager<IdentityUser> _signInManager; // Authentication
+        private readonly UserManager<MyUser> _userManager; //Authorization
+        private readonly SignInManager<MyUser> _signInManager; // Authentication
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, 
+        public LoginModel(SignInManager<MyUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<MyUser> userManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace ProjektuppgiftASP.NET.Data
 { 
-    public class EventContext : IdentityDbContext<User>
+    public class EventContext : IdentityDbContext<MyUser>
     {
         public EventContext(DbContextOptions<EventContext> options)
             : base(options)
         {
         }
         public DbSet<Event> Event { get; set; }
-        public DbSet<User> User { get; set; }
-        public async Task SeedAsync(UserManager<IdentityUser> userManager)
+        public DbSet<MyUser> MyUser { get; set; }
+        public async Task SeedAsync(UserManager<MyUser> userManager)
         {
             await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();

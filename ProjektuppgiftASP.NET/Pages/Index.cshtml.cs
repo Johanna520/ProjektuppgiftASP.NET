@@ -12,18 +12,19 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
+
 namespace ProjektuppgiftASP.NET.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly EventContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<MyUser> _userManager;
 
 
         public IndexModel(ILogger<IndexModel> logger, 
             EventContext context, 
-            UserManager<IdentityUser> userManager)
+            UserManager<MyUser> userManager)
         {
             _logger = logger;
             _context = context;

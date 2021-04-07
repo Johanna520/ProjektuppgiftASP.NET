@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Areas.Identity.Pages.Account
 {
@@ -17,10 +18,10 @@ namespace ProjektuppgiftASP.NET.Areas.Identity.Pages.Account
          * Vad får du som besökara komma åt, göra och använda? 
          * 
          */
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<MyUser> _userManager;
         private readonly IEmailSender _sender;
 
-        public RegisterConfirmationModel(UserManager<IdentityUser> userManager, IEmailSender sender)
+        public RegisterConfirmationModel(UserManager<MyUser> userManager, IEmailSender sender)
         {
             _userManager = userManager;
             _sender = sender;
