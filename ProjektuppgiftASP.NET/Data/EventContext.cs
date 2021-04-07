@@ -26,7 +26,7 @@ namespace ProjektuppgiftASP.NET.Data
             {
                 UserName = "Administrator",
             };
-            await userManager.CreateAsync(user, "Admin1");
+            await userManager.CreateAsync(user, "Admin_1");
 
 
             Event[] Event = new Event[]
