@@ -19,7 +19,7 @@ namespace ProjektuppgiftASP.NET.Data
         public DbSet<MyUser> MyUser { get; set; }
         public async Task SeedAsync(UserManager<MyUser> userManager)
         {
-            await Database.EnsureDeletedAsync();
+            /*await Database.EnsureDeletedAsync();*/
             await Database.EnsureCreatedAsync();
 
             MyUser user = new MyUser()
