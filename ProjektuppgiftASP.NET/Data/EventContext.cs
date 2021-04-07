@@ -22,6 +22,12 @@ namespace ProjektuppgiftASP.NET.Data
             await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();
 
+            MyUser user = new MyUser()
+            {
+                UserName = "Administrator",
+            };
+            await userManager.CreateAsync(user, "Admin1");
+
             Event[] Event = new Event[]
             {
                 new Event() { Title="Alicia Keys", Description="Music", Place="Ericsson Globe", Adress="Stockholm", Date=DateTime.Now,  SpotsAvailable=150,  },
