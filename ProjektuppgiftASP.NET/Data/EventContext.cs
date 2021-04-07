@@ -28,6 +28,7 @@ namespace ProjektuppgiftASP.NET.Data
             };
             await userManager.CreateAsync(user, "Admin1");
 
+
             Event[] Event = new Event[]
             {
                 new Event() { Title="Alicia Keys", Description="Music", Place="Ericsson Globe", Adress="Stockholm", Date=DateTime.Now,  SpotsAvailable=150,  },
