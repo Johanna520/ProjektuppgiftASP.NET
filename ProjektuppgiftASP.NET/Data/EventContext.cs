@@ -17,17 +17,30 @@ namespace ProjektuppgiftASP.NET.Data
         }
         public DbSet<Event> Event { get; set; }
         public DbSet<MyUser> MyUser { get; set; }
-        public async Task SeedAsync(UserManager<MyUser> userManager)
+        public async Task ResetAndSeedAsync(UserManager<MyUser> userManager, 
+            RoleManager<IdentityRole> roleManager)
         {
-            /*await Database.EnsureDeletedAsync();*/
+            await Database.EnsureDeletedAsync();
             await Database.EnsureCreatedAsync();
 
-            MyUser user = new MyUser()
-            {
-                UserName = "Administrator",
-            };
-            await userManager.CreateAsync(user, "Admin_1");
+            await roleManager.CreateAsync(new IdentityRole("Attendee"));
+            await roleManager.CreateAsync(new IdentityRole("Admin"));
+            await roleManager.CreateAsync(new IdentityRole("Organizer"));
 
+            
+
+            MyUser admin = new MyUser()
+            {
+                UserName = "admin",
+                Email = "admin@hotmail.com",
+            };
+
+            await userManager.CreateAsync(admin, "Admin_1");
+            await userManager.AddToRoleAsync(admin, "Admin");
+
+            
+
+            
 
             Event[] Event = new Event[]
             {

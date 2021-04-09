@@ -20,20 +20,23 @@ namespace ProjektuppgiftASP.NET.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly EventContext _context;
         private readonly UserManager<MyUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
 
         public IndexModel(ILogger<IndexModel> logger, 
             EventContext context, 
-            UserManager<MyUser> userManager)
+            UserManager<MyUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             _context = context;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
        public async Task OnGetAsync()
         {
-            await _context.SeedAsync(_userManager);
+            await _context.ResetAndSeedAsync(_userManager, _roleManager);
         }
     }
 }
