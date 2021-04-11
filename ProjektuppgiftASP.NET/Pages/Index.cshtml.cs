@@ -36,7 +36,7 @@ namespace ProjektuppgiftASP.NET.Pages
 
        public async Task OnGetAsync()
         {
-            await _context.ResetAndSeedAsync(_userManager, _roleManager);
+            await _context.SeedAsync(_userManager, _roleManager);
         }
     }
 }
