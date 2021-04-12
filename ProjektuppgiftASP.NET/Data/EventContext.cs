@@ -27,6 +27,9 @@ namespace ProjektuppgiftASP.NET.Data
             await roleManager.CreateAsync(new IdentityRole("Admin"));
             await roleManager.CreateAsync(new IdentityRole("Organizer"));
 
+           
+           
+
             
 
             MyUser admin = new MyUser()
