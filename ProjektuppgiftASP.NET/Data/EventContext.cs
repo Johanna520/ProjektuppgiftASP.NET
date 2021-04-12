@@ -17,7 +17,7 @@ namespace ProjektuppgiftASP.NET.Data
         }
         public DbSet<Event> Event { get; set; }
         public DbSet<MyUser> MyUser { get; set; }
-        public async Task ResetAndSeedAsync(UserManager<MyUser> userManager, 
+        public async Task SeedAsync(UserManager<MyUser> userManager, 
             RoleManager<IdentityRole> roleManager)
         {
             await Database.EnsureDeletedAsync();
@@ -35,8 +35,8 @@ namespace ProjektuppgiftASP.NET.Data
                 Email = "admin@hotmail.com",
             };
 
-            await userManager.CreateAsync(admin, "Admin_1");
-            await userManager.AddToRoleAsync(admin, "Admin");
+           await userManager.CreateAsync(admin, "Admin_1");
+            //await userManager.AddToRoleAsync(admin, "Admin");
 
             
 
