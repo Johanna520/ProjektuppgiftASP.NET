@@ -49,10 +49,6 @@ namespace ProjektuppgiftASP.NET
             });*/
 
             services.AddRazorPages();
-
-            // Lägger till admin sidor
-            services.AddControllersWithViews();
-            services.AddCoreAdmin();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
