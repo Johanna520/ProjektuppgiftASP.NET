@@ -28,13 +28,26 @@ namespace ProjektuppgiftASP.NET
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<EventContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
-            services.AddDefaultIdentity<MyUser>()
+            services.AddDefaultIdentity<MyUser>(options => { })//Innanför måsvingarna lägger vi till inställnigar för pasword
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<EventContext>();
+          /*  Finns redan inställt iom UI-koden, scaffolding ??. . .
+           *  services.ConfigureApplicationCookie(options =>
+            {
+                //Länkar till varningssida om du vill in på en sida som du inte är behörig till.
+                options.AccessDeniedPath = "/Account/AccessDenied";
+
+                //hur länge kan en användare vara inloggad? 5 Timmar. 
+                options.ExpireTimeSpan = TimeSpan.FromHours(5);
+                options.SlidingExpiration = true;
+        
+            });*/
+
             services.AddRazorPages();
 
             // Lägger till admin sidor
