@@ -18,14 +18,14 @@ namespace ProjektuppgiftASP.NET
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
-            /* using (var scope = host.Services.CreateScope())
+            using (var scope = host.Services.CreateScope())
              {
                  var services = scope.ServiceProvider;
                  var eventContext = services.GetRequiredService<EventContext>();
                 var userManager = services.GetRequiredService<UserManager<MyUser>>();
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                  eventContext.SeedAsync(userManager, roleManager).Wait();
-             }*/
+             }
 
             host.Run();
         }

@@ -34,9 +34,8 @@ namespace ProjektuppgiftASP.NET.Pages
             _roleManager = roleManager;
         }
 
-       public async Task OnGetAsync()
+        public void OnGet()
         {
-            await _context.SeedAsync(_userManager, _roleManager);
         }
     }
 }

@@ -36,7 +36,7 @@ namespace ProjektuppgiftASP.NET.Data
             };
 
            await userManager.CreateAsync(admin, "Admin_1");
-            //await userManager.AddToRoleAsync(admin, "Admin");
+           await userManager.AddToRoleAsync(admin, "Admin");
 
             
 
