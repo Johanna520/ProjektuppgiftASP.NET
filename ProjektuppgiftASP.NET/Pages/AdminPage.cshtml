@@ -1,0 +1,16 @@
+﻿@page
+@model ProjektuppgiftASP.NET.Pages.AdminPageModel
+@{
+}
+
+<h1>Admin Page</h1>
+
+@if (User.IsInRole("Admin"))
+{
+    <h1 class="display-4">Welcome! Yo Admin!!</h1>
+}
+
+else
+{
+   <a asp-page="/User/Login" type="button" class="btn btn-outline-primary">Log In</a>
+}
