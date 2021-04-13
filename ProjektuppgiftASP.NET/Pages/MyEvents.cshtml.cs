@@ -12,7 +12,7 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages
 {
-    [Authorize]
+   
     public class MyEventsModel : PageModel
     {
         private readonly EventContext _context;
@@ -37,6 +37,8 @@ namespace ProjektuppgiftASP.NET.Pages
                 .FirstOrDefaultAsync();
 
             Event = user.JoinedEvents;
+
+            //fixa så de olika organizer och admin kan komma in är också . 
         }
 
   
