@@ -1,5 +1,7 @@
 ﻿@page
 @model ProjektuppgiftASP.NET.Pages.AdminPageModel
+
+@inject UserManager<MyUser> userManager
 @{
 }
 
@@ -8,11 +10,21 @@
 @if (User.IsInRole("Admin"))
 {
     <h1 class="display-4">Hej Admin!</h1>
+
+    @foreach (var user in Model.Users)
+    {
+        Model.CheckBox = await userManager.IsInRoleAsync(user, "Organizer");
+
+        <form method="post" asp-route-id="@user.Id">
+            @Html.CheckBoxFor(m => m.CheckBox, new { onchange = "this.form.submit()" })
+        </form>
+
+        <p>@user.UserName - @user.Email</p>}
 }
 
 else
 {
-     <a asp-area="Identity" asp-page="/Account/Login">
+    <a asp-area="Identity" asp-page="/Account/Login">
         <input type="button" class="btn btn-primary" value="Log In">
     </a>
 }
