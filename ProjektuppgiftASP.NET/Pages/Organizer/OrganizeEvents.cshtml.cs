@@ -12,9 +12,9 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
 {
     public class OrganizeEventsModel : PageModel
     {
-        private readonly ProjektuppgiftASP.NET.Data.EventContext _context;
+        private readonly EventContext _context;
 
-        public OrganizeEventsModel(ProjektuppgiftASP.NET.Data.EventContext context)
+        public OrganizeEventsModel(EventContext context)
         {
             _context = context;
         }
