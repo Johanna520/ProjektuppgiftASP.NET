@@ -6,28 +6,52 @@
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
+
+
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"> Admin !</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Manage Users</button> <!--Ändra asppage när den är klar!-->
+                </form>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                </form>
+            </li>
+        }
+        @if (User.IsInRole("Organizer"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Eventizer co.inc.</a>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Organize Events</button> <!--Ändra asppage när den är klar!-->
+                </form>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="nav-link btn btn-link text-dark">Add Event</button> <!--Ändra asppage när den är klar!-->
+                </form>
+            </li>
+ 
+
+
+        }
         MyUser user = await UserManager.GetUserAsync(User);
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @user.UserName  ! !</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name ! !</a>
         </li>
         <li class="nav-item">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
-
-        @if (User.IsInRole("Admin"))
-        {
-<li class="nav-item">
-    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello Admin ! !</a>
-</li>
-        }
-        @if (User.IsInRole("Organizer"))
-        {
-<li class="nav-item">
-    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello Organizer ! !</a>
-</li>
-        }
     }
 
     else
