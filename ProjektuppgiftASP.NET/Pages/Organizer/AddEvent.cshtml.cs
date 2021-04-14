@@ -30,15 +30,24 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return Page();
+                _context.Add(Event);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "The Event has been added!";                                
+               return RedirectToPage("/Organizer/OrganizeEvents");
             }
 
-            _context.Event.Add(Event);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+     
+            
+            return RedirectToPage("Index");
         }
     }
 }
+
+/*
+ * Organizer ska skapa och lägga till nytt event
+ * 
+ * nytt event måste vara inblandat
+ * referns till 
+ */
