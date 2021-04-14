@@ -1,4 +1,9 @@
 ﻿@page
+@using Microsoft.AspNetCore.Identity
+@using ProjektuppgiftASP.NET.Models;
+@inject SignInManager<MyUser> SignInManager
+@inject UserManager<MyUser> UserManager
+
 @model ProjektuppgiftASP.NET.Pages.AdminPageModel
 
 @inject UserManager<MyUser> userManager
