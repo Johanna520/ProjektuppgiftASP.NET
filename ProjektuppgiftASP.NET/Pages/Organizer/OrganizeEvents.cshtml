@@ -5,6 +5,20 @@
     ViewData["Title"] = "OrganizeEvents";
 }
 
+
+    @if (TempData["Success"] != null)
+    {
+<div class="alert alert-success">
+    @TempData["Success"]
+</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+<div class="alert alert-danger">
+    @TempData["Error"]
+</div>
+    }
+
 <h1>OrganizeEvents</h1>
 
 
@@ -27,32 +41,33 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Event) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
+        @foreach (var item in Model.Event)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Place)
-            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Place)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            
-        <td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+
+                <td>
 
 
-            <a asp-page="./EditEvent" asp-route-id="@item.Id">Edit</a> |
-    |
-            <a asp-page="./DeleteEvent" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="./EditEvent" asp-route-id="@item.Id">Edit</a> |
+                    |
+                    <a asp-page="./DeleteEvent" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
 
-    }
-        </tbody>
+        }
+    </tbody>
 
-    </table>
+</table>
 
 

@@ -6,6 +6,12 @@
 }
 <h1>My Events</h1>
 
+@if (TempData["Success"] != null)
+{
+<div class="alert alert-info">
+    @TempData["Success"]
+</div>
+}
 <hr />
 
 <table class="table">

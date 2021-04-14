@@ -53,6 +53,7 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
             try
             {
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "The Event has been uppdated!";
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -65,7 +66,8 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
                     throw;
                 }
             }
-
+        
+       
             return RedirectToPage("/Organizer/OrganizeEvents");
         }
 

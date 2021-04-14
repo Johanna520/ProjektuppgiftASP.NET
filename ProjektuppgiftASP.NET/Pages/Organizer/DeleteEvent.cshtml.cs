@@ -42,6 +42,7 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
         {
             if (id == null)
             {
+                TempData["Error"] = "This Event doesn't exist!";
                 return NotFound();
             }
 
@@ -51,9 +52,10 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
             {
                 _context.Event.Remove(Event);
                 await _context.SaveChangesAsync();
+                TempData["Success"] = "The Event has been deleted!";
             }
-
-            return RedirectToPage("//Organizer/OrganizeEvents");
+         
+            return RedirectToPage("/Organizer/OrganizeEvents");
         }
     }
 }

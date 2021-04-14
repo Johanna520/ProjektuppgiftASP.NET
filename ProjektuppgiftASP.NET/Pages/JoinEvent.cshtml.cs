@@ -63,8 +63,9 @@ namespace ProjektuppgiftASP.NET.Pages
             user.JoinedEvents.Add(Event);
 
             await _context.SaveChangesAsync();
-
-            return Page();
+            TempData["Success"] = "The Event has been added to your eventlist. See you there!!";
+            return RedirectToPage("/MyEvents");
+          
 
 
         }
