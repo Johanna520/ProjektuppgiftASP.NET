@@ -64,7 +64,7 @@ namespace ProjektuppgiftASP.NET.Pages
 
             await _context.SaveChangesAsync();
             TempData["Success"] = "The Event has been added to your eventlist. See you there!!";
-            return RedirectToPage("/MyEvents");
+            return RedirectToPage("/User/MyEvents");
           
 
 
