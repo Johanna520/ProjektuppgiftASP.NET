@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ProjektuppgiftASP.NET.Data;
 using ProjektuppgiftASP.NET.Models;
 
-namespace ProjektuppgiftASP.NET.Pages
+namespace ProjektuppgiftASP.NET.Pages.Organizer
 {
-  
-    public class EventsModel : PageModel
+    public class OrganizeEventsModel : PageModel
     {
-        
         private readonly EventContext _context;
 
-        public EventsModel(EventContext context)
+        public OrganizeEventsModel(EventContext context)
         {
             _context = context;
         }

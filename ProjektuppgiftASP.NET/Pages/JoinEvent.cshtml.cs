@@ -12,7 +12,7 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages
 {
-    [Authorize]
+    
     public class JoinEventModel : PageModel
     {
         private readonly EventContext _context;
