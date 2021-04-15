@@ -35,10 +35,10 @@ namespace ProjektuppgiftASP.NET.Pages.Admin
         }
         
     
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(string id)
         {
-            var userId = _userManager.GetUserId(User);
-            var user = await _context.Users.FirstOrDefaultAsync(a => a.Id == userId);
+
+            var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
             var isOrganizer = await _userManager.IsInRoleAsync(user, "organizer");
 

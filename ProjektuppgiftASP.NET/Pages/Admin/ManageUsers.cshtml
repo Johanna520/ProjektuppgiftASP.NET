@@ -32,27 +32,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-                @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
-                {
-                    <button id="@item.Id" type="button" class="btn btn-primary active">Organizer</button>
-                 
-                }
-                else
-                {
-            <button id="@item.Id" type="button" class="btn btn-primary" disabled>Not Organizer </button>
-               
-                }
-            </td>
+         
             <td>
                 <form method="post">
                     @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
                     {
-                        <input asp-route-id="@item.Id " type="submit" value="Unassign" class="btn btn-outline-danger" />
+                        <input asp-route-id="@item.Id " type="submit" value="Organizer" class="btn btn-primary active" />
                     }
                     else
                     {
-                        <input asp-route-id="@item.Id " type="submit" value="Assign" class="btn btn-outline-primary" />
+                        <input asp-route-id="@item.Id " type="submit" value="Not Organizer" class="btn btn-primary disabled " />
                     }
 
 
