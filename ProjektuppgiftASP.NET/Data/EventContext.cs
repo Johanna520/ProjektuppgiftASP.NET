@@ -37,17 +37,17 @@ namespace ProjektuppgiftASP.NET.Data
                 UserName = "admin",
                 Email = "admin@hotmail.com",
             };
-            //Kommentera ut denna kod för att testa UserManager-knappen
-            MyUser organizer = new MyUser()
+          
+            /*MyUser organizer = new MyUser()
                   {
                       UserName = "organizer",
                       Email = "organizer@hotmail.com",
-                  }; 
+                  };*/ 
 
            await userManager.CreateAsync(admin, "Admin_1");
-            await userManager.CreateAsync(organizer, "Organizer_1");
+            //await userManager.CreateAsync(organizer, "Organizer_1");
             await userManager.AddToRoleAsync(admin, "Admin");
-            await userManager.AddToRoleAsync(organizer, "Organizer");
+            //await userManager.AddToRoleAsync(organizer, "Organizer");
 
 
 
