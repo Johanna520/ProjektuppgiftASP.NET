@@ -33,12 +33,12 @@ namespace ProjektuppgiftASP.NET.Pages.Admin
             MyUsers = await _context.MyUser.ToListAsync();
             await _context.SaveChangesAsync();
         }
-        
-    
-        public async Task<IActionResult> OnPostAsync(int? id)
+
+
+        public async Task<IActionResult> OnPostAsync(string id)
         {
-            var userId = _userManager.GetUserId(User);
-            var user = await _context.Users.FirstOrDefaultAsync(a => a.Id == userId);
+
+            var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
             var isOrganizer = await _userManager.IsInRoleAsync(user, "organizer");
 
@@ -57,10 +57,11 @@ namespace ProjektuppgiftASP.NET.Pages.Admin
             await _context.SaveChangesAsync();
             return RedirectToPage("/Admin/ManageUsers");
         }
+    }
      
     }
     
-}
+
 
 
 /*
