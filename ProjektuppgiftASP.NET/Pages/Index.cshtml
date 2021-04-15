@@ -9,25 +9,33 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
 
 <div class="d-flex justify-content-center py-5">
     @if (SignInManager.IsSignedIn(User))
     {
+        <div class="text-center">
+            <h1 class="display-4">Welcome  @User.Identity.Name</h1>
+            <br />
+            <a asp-page="/User/Events" type="button" class="btn btn-outline-primary">Find A New Event!</a>
 
-        <a asp-page="/User/Events" type="button" class="btn btn-outline-primary">Find A New Event!</a>
+            </div>
+            }
+            else
+            {
+            <div class="text-center">
+                <h1 class="display-4">Welcome</h1>
+                <br />
+                <h4> Please register and log in to join an event  </h4>
+                <br />
+                <br />
 
-     
-    }
-    else
-    {
-        <a asp-area="Identity" asp-page="/Account/Register">
-            <input type="button" class="btn btn-primary" value="Register">
-        </a> <a asp-area="Identity" asp-page="/Account/Login">
-            <input type="button" class="btn btn-primary" value="Log In">
-        </a>
-    }
-</div>
+
+                <a asp-area="Identity" asp-page="/Account/Register">
+                    <input type="button" class="btn btn-primary" value="Register">
+                </a> <a asp-area="Identity" asp-page="/Account/Login">
+                    <input type="button" class="btn btn-primary" value="Log In">
+                </a>
+            </div>
+            }
+    </div>

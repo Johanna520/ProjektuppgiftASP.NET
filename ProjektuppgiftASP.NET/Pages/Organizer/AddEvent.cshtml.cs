@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages.Organizer
 {
+    [Authorize(Roles = "Organizer")]
     public class AddEventModel : PageModel
     {
         private readonly EventContext _context;

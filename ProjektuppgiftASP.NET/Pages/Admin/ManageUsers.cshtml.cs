@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -11,6 +12,7 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class UserManagerModel : PageModel
     {
         private readonly EventContext _context;
@@ -40,17 +42,17 @@ namespace ProjektuppgiftASP.NET.Pages.Admin
 
             var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
-            var isOrganizer = await _userManager.IsInRoleAsync(user, "organizer");
+            var isOrganizer = await _userManager.IsInRoleAsync(user, "Organizer");
 
-            if (await _userManager.IsInRoleAsync(user, "organizer"))
+            if (await _userManager.IsInRoleAsync(user, "Organizer"))
             {
                 //await _userManager.AddToRoleAsync(user, "organizer");
-                await _userManager.RemoveFromRoleAsync(user, "organizer");
+                await _userManager.RemoveFromRoleAsync(user, "Organizer");
             }
             else
             {
                 //await _userManager.RemoveFromRoleAsync(user, "organizer");
-                await _userManager.AddToRoleAsync(user, "organizer");
+                await _userManager.AddToRoleAsync(user, "Organizer");
             }
 
 

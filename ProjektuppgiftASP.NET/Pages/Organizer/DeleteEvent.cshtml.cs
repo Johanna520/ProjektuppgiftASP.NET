@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -10,11 +11,12 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages.Organizer
 {
+    [Authorize(Roles = "Organizer")]
     public class DeleteEventModel : PageModel
     {
-        private readonly ProjektuppgiftASP.NET.Data.EventContext _context;
+        private readonly EventContext _context;
 
-        public DeleteEventModel(ProjektuppgiftASP.NET.Data.EventContext context)
+        public DeleteEventModel(EventContext context)
         {
             _context = context;
         }

@@ -11,7 +11,7 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages
 {
-  
+    [Authorize]
     public class EventsModel : PageModel
     {
         

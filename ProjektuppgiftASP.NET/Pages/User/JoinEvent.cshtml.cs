@@ -12,7 +12,7 @@ using ProjektuppgiftASP.NET.Models;
 
 namespace ProjektuppgiftASP.NET.Pages
 {
-    
+    [Authorize]
     public class JoinEventModel : PageModel
     {
         private readonly EventContext _context;
@@ -63,7 +63,7 @@ namespace ProjektuppgiftASP.NET.Pages
             user.JoinedEvents.Add(Event);
 
             await _context.SaveChangesAsync();
-            TempData["Success"] = "The Event has been added to your eventlist. See you there!!";
+            TempData["Success"] = "The Event has been added to My Events. See you there!!";
             return RedirectToPage("/User/MyEvents");
           
 

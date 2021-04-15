@@ -36,18 +36,7 @@ namespace ProjektuppgiftASP.NET
             services.AddDefaultIdentity<MyUser>(options => { })//Innanför måsvingarna lägger vi till inställnigar för pasword
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<EventContext>();
-          /*  Finns redan inställt iom UI-koden, scaffolding ??. . .
-           *  services.ConfigureApplicationCookie(options =>
-            {
-                //Länkar till varningssida om du vill in på en sida som du inte är behörig till.
-                options.AccessDeniedPath = "/Account/AccessDenied";
-
-                //hur länge kan en användare vara inloggad? 5 Timmar. 
-                options.ExpireTimeSpan = TimeSpan.FromHours(5);
-                options.SlidingExpiration = true;
-        
-            });*/
-
+         
             services.AddRazorPages();
         }
 

@@ -20,7 +20,9 @@
                 @Html.DisplayNameFor(model => model.MyUsers[0].Email)
             </th>
             
-            <th></th>
+            <th>
+                <p>Is Organizer</p> 
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -32,9 +34,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
-        
-            </td>
+           
             <td>
                 <form method="post">
                     @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
