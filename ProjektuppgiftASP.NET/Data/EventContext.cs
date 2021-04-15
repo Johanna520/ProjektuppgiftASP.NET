@@ -37,6 +37,7 @@ namespace ProjektuppgiftASP.NET.Data
                 UserName = "admin",
                 Email = "admin@hotmail.com",
             };
+            //Kommentera ut denna kod för att testa UserManager-knappen
             MyUser organizer = new MyUser()
                   {
                       UserName = "organizer",

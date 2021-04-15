@@ -1,0 +1,63 @@
+﻿@page
+@model ProjektuppgiftASP.NET.Pages.Admin.UserManagerModel
+
+@{
+    ViewData["Title"] = "UserManager";
+}
+
+<h1>UserManager</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MyUsers[0].UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MyUsers[0].Email)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.MyUsers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
+                {
+                    <button id="@item.Id" type="button" class="btn btn-primary active">Organizer</button>
+                 
+                }
+                else
+                {
+            <button id="@item.Id" type="button" class="btn btn-primary" disabled>Not Organizer </button>
+               
+                }
+            </td>
+            <td>
+                <form method="post">
+                    @if (await Model._userManager.IsInRoleAsync(item, "organizer"))
+                    {
+                        <input asp-route-id="@item.Id " type="submit" value="Unassign" class="btn btn-outline-danger" />
+                    }
+                    else
+                    {
+                        <input asp-route-id="@item.Id " type="submit" value="Assign" class="btn btn-outline-primary" />
+                    }
+
+
+                </form>
+        </tr>
+}
+    </tbody>
+</table>
