@@ -34,8 +34,7 @@ namespace ProjektuppgiftASP.NET.Pages
             {
                 return NotFound();
             }
-            
-            //MyUsers = await _context.MyUser.ToListAsync();
+
             Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
 
             if (Event == null)
@@ -49,19 +48,18 @@ namespace ProjektuppgiftASP.NET.Pages
 
         [BindProperty]
         public Event newEvents { get; set; }
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-      
             var userId = _userManager.GetUserId(User);
             var user = await _context.MyUser.Where(a => a.Id == userId)
              .Include(e => e.JoinedEvents)
              .FirstOrDefaultAsync();
 
-         
+            Event = await _context.Event.FirstOrDefaultAsync(m => m.Id == id);
             user.JoinedEvents.Add(Event);
 
             await _context.SaveChangesAsync();

@@ -17,7 +17,22 @@ namespace ProjektuppgiftASP.NET.Pages
 {
     public class IndexModel : PageModel
     {
-       
+        private readonly ILogger<IndexModel> _logger;
+        private readonly EventContext _context;
+        private readonly UserManager<MyUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+
+        public IndexModel(ILogger<IndexModel> logger, 
+            EventContext context, 
+            UserManager<MyUser> userManager,
+            RoleManager<IdentityRole> roleManager)
+        {
+            _logger = logger;
+            _context = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
+        }
 
         public void OnGet()
         {

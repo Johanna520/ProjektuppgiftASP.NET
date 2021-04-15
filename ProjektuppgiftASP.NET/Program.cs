@@ -25,8 +25,6 @@ namespace ProjektuppgiftASP.NET
                 var userManager = services.GetRequiredService<UserManager<MyUser>>();
                 var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                  eventContext.SeedAsync(userManager, roleManager).Wait();
-
-               
              }
 
             host.Run();
