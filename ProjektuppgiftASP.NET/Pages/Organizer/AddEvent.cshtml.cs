@@ -57,9 +57,4 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
     }
 }
 
-/*
- * Organizer ska skapa och lägga till nytt event
- * 
- * nytt event måste vara inblandat
- * referns till 
- */
+

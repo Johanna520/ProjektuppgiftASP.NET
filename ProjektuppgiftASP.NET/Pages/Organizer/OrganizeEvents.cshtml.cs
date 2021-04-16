@@ -34,18 +34,6 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
             var userModel = _context.Users.FirstOrDefault(m => m.UserName == user.Name);
             Event = await _context.Event.Where(m => m.Organizer == userModel).ToListAsync();
 
-            /*Event = await _context.Event.Where(m => m.Organizer == userModel).ToListAsync();
-            var userId = _userManager.GetUserId(User);*/
-           // Event = await _context.Event.ToListAsync();
-
-            /*var userId = _userManager.GetUserId(User);
-             var user = await _context.Event
-                 .Where(u => u.Organizer.Id = userId)
-                .ToListAsync();*/
-
-            //Event = user.JoinedEvents;
-
-            //Event = await _context.Event.FirstOrDefaultAsync();
         }
     }
 }
