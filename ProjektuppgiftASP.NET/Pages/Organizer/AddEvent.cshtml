@@ -42,7 +42,7 @@
                 <label asp-for="Event.SpotsAvailable" class="control-label"></label>
                 <input asp-for="Event.SpotsAvailable" class="form-control" />
                 <span asp-validation-for="Event.SpotsAvailable" class="text-danger"></span>
-            </div>
+  </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -51,9 +51,9 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="/Organizer/OrganizeEvents">Back to List</a>
 </div>
-<
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

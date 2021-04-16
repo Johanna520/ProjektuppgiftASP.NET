@@ -42,16 +42,16 @@ namespace ProjektuppgiftASP.NET.Pages.Admin
 
             var user = await _context.Users.FirstOrDefaultAsync(m => m.Id == id);
 
-            var isOrganizer = await _userManager.IsInRoleAsync(user, "Organizer");
+            await _userManager.IsInRoleAsync(user, "Organizer");
 
             if (await _userManager.IsInRoleAsync(user, "Organizer"))
             {
-                //await _userManager.AddToRoleAsync(user, "organizer");
+                
                 await _userManager.RemoveFromRoleAsync(user, "Organizer");
             }
             else
             {
-                //await _userManager.RemoveFromRoleAsync(user, "organizer");
+               
                 await _userManager.AddToRoleAsync(user, "Organizer");
             }
 

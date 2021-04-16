@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -15,17 +16,36 @@ namespace ProjektuppgiftASP.NET.Pages.Organizer
     public class OrganizeEventsModel : PageModel
     {
         private readonly EventContext _context;
+        private readonly UserManager<MyUser> _userManager;
 
-        public OrganizeEventsModel(EventContext context)
+        public OrganizeEventsModel(EventContext context,
+            UserManager<MyUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public IList<Event> Event { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? id)
         {
-            Event = await _context.Event.ToListAsync();
+            var user = User.Identity;
+
+            var userModel = _context.Users.FirstOrDefault(m => m.UserName == user.Name);
+            Event = await _context.Event.Where(m => m.Organizer == userModel).ToListAsync();
+
+            /*Event = await _context.Event.Where(m => m.Organizer == userModel).ToListAsync();
+            var userId = _userManager.GetUserId(User);*/
+           // Event = await _context.Event.ToListAsync();
+
+            /*var userId = _userManager.GetUserId(User);
+             var user = await _context.Event
+                 .Where(u => u.Organizer.Id = userId)
+                .ToListAsync();*/
+
+            //Event = user.JoinedEvents;
+
+            //Event = await _context.Event.FirstOrDefaultAsync();
         }
     }
 }

@@ -9,8 +9,10 @@ namespace ProjektuppgiftASP.NET.Models
     public class Event
     {
         public int Id { get; set; }
+        [InverseProperty("JoinedEvents")]
         public List<MyUser> Attendees { get; set; } //FK, many-to-many
-        public List<MyUser> Organizer { get; set; } // FK, one-to-many
+        [InverseProperty("HostedEvents")]
+        public MyUser Organizer { get; set; } // FK, one-to-many
         public string Title { get; set; }
         public string Description { get; set; }
         public string Place { get; set; }
